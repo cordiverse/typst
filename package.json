@@ -1,6 +1,6 @@
 {
     "name": "cordis-plugin-typst",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Typst compiler service for cordis (v3 & v4)",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",

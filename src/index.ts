@@ -26,8 +26,8 @@ class CompilerInstance {
 
     constructor(
         private compilerPromise: Promise<typst.TypstCompiler>,
-        private rendererModule: typeof renderer,
-        private rendererPromise: Promise<renderer.TypstRenderer>,
+        private rendererModule?: typeof renderer,
+        private rendererPromise?: Promise<renderer.TypstRenderer>,
     ) {
         this.tailPromise = this.compilerPromise;
     }
@@ -64,6 +64,9 @@ class CompilerInstance {
             return result;
         }
 
+        if (!this.rendererModule || !this.rendererPromise) {
+            throw new Error('typst renderer is not ready');
+        }
         const [compiler, renderer] = await Promise.all([this.compiler, this.rendererPromise]);
         const vector = await compiler.compile(this.mainFilePath, [], 'vector', 0);
         if (!vector) throw new Error(`typst compile failed: ${this.mainFilePath}`);
@@ -85,8 +88,8 @@ class CompilerInstance {
 
 export default class TypstService extends Service {
     compilerJs!: typeof typst;
-    rendererJs!: typeof renderer;
-    renderer: Promise<renderer.TypstRenderer> = Promise.reject(new Error('typst renderer not started'));
+    rendererJs?: typeof renderer;
+    renderer?: Promise<renderer.TypstRenderer>;
     fonts: Record<string, Uint8Array> = {};
 
     constructor(ctx: Context) {
