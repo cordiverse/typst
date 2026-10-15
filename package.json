@@ -1,0 +1,38 @@
+{
+    "name": "cordis-plugin-typst",
+    "version": "0.0.1",
+    "description": "Typst compiler service for cordis (v3 & v4)",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "files": [
+        "lib",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "prepublishOnly": "tsc"
+    },
+    "keywords": [
+        "cordis",
+        "typst",
+        "pdf"
+    ],
+    "license": "MIT",
+    "engines": {
+        "node": ">=18"
+    },
+    "peerDependencies": {
+        "cordis": ">=3.0.0 <5"
+    },
+    "dependencies": {
+        "@expo-google-fonts/noto-sans-sc": "^0.4.4",
+        "@myriaddreamin/typst-ts-web-compiler": "^0.7.0",
+        "dejavu-fonts-ttf": "^2.37.3"
+    },
+    "devDependencies": {
+        "@types/node": "^26.6.5",
+        "cordis": "4.0.0-rc.11",
+        "typescript": "^5.9.3"
+    }
+}
