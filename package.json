@@ -10,8 +10,7 @@
         "LICENSE"
     ],
     "scripts": {
-        "build": "tsc",
-        "prepublishOnly": "tsc"
+        "build": "tsc -b"
     },
     "keywords": [
         "cordis",
@@ -20,7 +19,7 @@
     ],
     "license": "MIT",
     "engines": {
-        "node": ">=18"
+        "node": ">=20"
     },
     "peerDependencies": {
         "cordis": ">=3.0.0 <5"
