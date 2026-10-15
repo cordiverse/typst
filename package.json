@@ -1,6 +1,6 @@
 {
     "name": "cordis-plugin-typst",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Typst compiler service for cordis (v3 & v4)",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@expo-google-fonts/noto-sans-sc": "^0.4.4",
+        "@myriaddreamin/typst-ts-renderer": "^0.7.0",
         "@myriaddreamin/typst-ts-web-compiler": "^0.7.0",
         "dejavu-fonts-ttf": "^2.37.3"
     },

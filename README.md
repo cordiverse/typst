@@ -25,7 +25,7 @@ ctx.inject(['typst'], (c) => {
   - `.mainFile(path)` — 指定主文件
   - `.file(path, source)` — 添加源文件
   - `.binary(path, buffer)` — 添加二进制影子文件
-  - `.to(format)` — 编译,`format` 为 `'vector' | 'pdf'`
+  - `.to(format)` — 编译,`format` 为 `'vector' | 'pdf' | 'svg' | 'plain-svg'`(`'svg'`/`'plain-svg'` 返回 SVG 字符串,前者含 Web 交互脚本,后者为自包含的精简版)
 
 ## License
 

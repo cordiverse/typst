@@ -12,6 +12,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@myriaddreamin/typst-ts-renderer@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@myriaddreamin/typst-ts-renderer@npm:0.7.0"
+  checksum: 10c0/8b2f5554dfc70ad88b5c04bde913197c66db325e45410bd139cae25445e83f59eda6e133485484631ceb462a05690d736705491729b5dec39eb2c8dd6a25ab22
+  languageName: node
+  linkType: hard
+
 "@myriaddreamin/typst-ts-web-compiler@npm:^0.7.0":
   version: 0.7.0
   resolution: "@myriaddreamin/typst-ts-web-compiler@npm:0.7.0"
@@ -40,6 +47,7 @@ __metadata:
   resolution: "cordis-plugin-typst@workspace:."
   dependencies:
     "@expo-google-fonts/noto-sans-sc": "npm:^0.4.4"
+    "@myriaddreamin/typst-ts-renderer": "npm:^0.7.0"
     "@myriaddreamin/typst-ts-web-compiler": "npm:^0.7.0"
     "@types/node": "npm:^26.6.5"
     cordis: "npm:4.0.0-rc.11"
