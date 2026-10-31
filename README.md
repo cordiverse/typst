@@ -29,4 +29,8 @@ ctx.inject(['typst'], (c) => {
 
 ## License
 
-MIT (compiler workflow forked from [typst.ts](https://github.com/Myriad-Dreamin/typst.ts), Apache-2.0)
+- 代码:MIT(compiler workflow forked from [typst.ts](https://github.com/Myriad-Dreamin/typst.ts),Apache-2.0)
+- `assets/fonts/` 内置字体,以原文件再分发,各自 license 见同目录:
+  - Libertinus Serif ×4 — OFL-1.1(`OFL.txt`)
+  - NewCM10-Bold / -Italic / -BoldItalic、NewCMMath ×2 — GFL-1.0(`GUST-FONT-LICENSE.txt`)
+  - NewCM10-Regular — GPL-3.0-or-later + Font/Distribution Exception(`LICENSE-NewCM.txt`)

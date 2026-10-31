@@ -1,4 +1,6 @@
 import fs from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 import type * as typst from '@myriaddreamin/typst-ts-web-compiler';
 import type * as renderer from '@myriaddreamin/typst-ts-renderer';
@@ -7,6 +9,7 @@ import type { Context } from 'cordis';
 
 const require = createRequire(import.meta.url);
 const load = (name: string) => fs.readFileSync(require.resolve(name));
+const assetDir = (name: string) => join(dirname(fileURLToPath(import.meta.url)), '..', 'assets', name);
 
 declare module 'cordis' {
     interface Context {
@@ -76,10 +79,12 @@ class CompilerInstance {
         options.artifact_content = vector;
         const session = renderer.create_session(options);
         try {
-            // parts bitmask: body=1, defs=2, css=4, js=8; plain-svg keeps body+defs only.
+            // parts bitmask: body=1, defs=2, css=4, js=8.
+            // plain-svg keeps body+defs+css: the css part hides the transparent
+            // text-selection layer (.tsel), without it every glyph renders twice
             return format === 'svg'
                 ? renderer.svg_data(session)
-                : renderer.svg_data(session, 1 | 2);
+                : renderer.svg_data(session, 1 | 2 | 4);
         } finally {
             session.free();
         }
@@ -104,6 +109,10 @@ export default class TypstService extends Service {
         this.renderer = new this.rendererJs.TypstRendererBuilder().build();
         this.addFont('DejaVuSansMono', load('dejavu-fonts-ttf/ttf/DejaVuSansMono.ttf'));
         this.addFont('NotoSans', load('@expo-google-fonts/noto-sans-sc/400Regular/NotoSansSC_400Regular.ttf'));
+        for (const font of fs.readdirSync(assetDir('fonts'))) {
+            if (!/\.(otf|ttf|ttc|woff2?)$/.test(font)) continue; // skip license texts
+            this.addFont(font, fs.readFileSync(join(assetDir('fonts'), font)));
+        }
     }
 
     // cordis v3 calls start(), cordis v4 calls [Service.init]() only

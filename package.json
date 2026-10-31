@@ -1,13 +1,14 @@
 {
     "name": "cordis-plugin-typst",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Typst compiler service for cordis (v3 & v4)",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "files": [
         "lib",
         "README.md",
-        "LICENSE"
+        "LICENSE",
+        "assets"
     ],
     "scripts": {
         "build": "tsc -b"
@@ -17,7 +18,7 @@
         "typst",
         "pdf"
     ],
-    "license": "MIT",
+    "license": "MIT AND OFL-1.1 AND GFL-1.0 AND GPL-3.0-or-later WITH Font-exception-2.0",
     "engines": {
         "node": ">=20"
     },
