@@ -103,9 +103,9 @@ export default class TypstService extends Service {
 
     async start(): Promise<void> {
         this.compilerJs = await import('@myriaddreamin/typst-ts-web-compiler');
-        this.compilerJs.initSync(load('@myriaddreamin/typst-ts-web-compiler/pkg/typst_ts_web_compiler_bg.wasm'));
+        this.compilerJs.initSync({ module: load('@myriaddreamin/typst-ts-web-compiler/pkg/typst_ts_web_compiler_bg.wasm') });
         this.rendererJs = await import('@myriaddreamin/typst-ts-renderer');
-        this.rendererJs.initSync(load('@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm'));
+        this.rendererJs.initSync({ module: load('@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm') });
         this.renderer = new this.rendererJs.TypstRendererBuilder().build();
         this.addFont('DejaVuSansMono', load('dejavu-fonts-ttf/ttf/DejaVuSansMono.ttf'));
         this.addFont('NotoSans', load('@expo-google-fonts/noto-sans-sc/400Regular/NotoSansSC_400Regular.ttf'));
